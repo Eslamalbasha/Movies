@@ -12,7 +12,9 @@ const MoviesList = ({ movies, getPage, pageCount }) => {
       ) : (
         <h2 className="text-center p-5">Not Found</h2>
       )}
-      <Pagination getPage={getPage} pageCount={pageCount} />
+      {movies.length >= 1 ? (
+        <Pagination getPage={getPage} pageCount={pageCount} />
+      ) : null}
     </Row>
   );
 };
