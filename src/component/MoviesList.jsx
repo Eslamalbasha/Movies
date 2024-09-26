@@ -1,7 +1,8 @@
 import { Row } from "react-bootstrap";
 import CardMovies from "./CardMovies";
+import Pagination from "./Pagination";
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies, getPage, pageCount }) => {
   return (
     <Row className="mt-3">
       {movies.length >= 1 ? (
@@ -11,6 +12,7 @@ const MoviesList = ({ movies }) => {
       ) : (
         <h2 className="text-center p-5">Not Found</h2>
       )}
+      <Pagination getPage={getPage} pageCount={pageCount} />
     </Row>
   );
 };

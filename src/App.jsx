@@ -5,14 +5,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-  // get all moies by axios
   const [movies, setMovies] = useState([]);
-
+  const [pageCount, setPageCount] = useState(0);
+  // get all moies by axios
   const getAllMovies = async () => {
     const res = await axios.get(
       "https://api.themoviedb.org/3/movie/popular?api_key=e3bb2db6237113d6ad4ef719e0b1e827&language=en-US&page=1"
     );
     setMovies(res.data.results);
+    setPageCount(res.data.total_pages);
+  };
+  // get current page
+  const getPage = async (page) => {
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=e3bb2db6237113d6ad4ef719e0b1e827&language=en-US&page=${page}`
+    );
+    setMovies(res.data.results);
+    setPageCount(res.data.total_pages);
   };
   // Search in api
   const search = async (word) => {
@@ -23,6 +32,7 @@ function App() {
         `https://api.themoviedb.org/3/search/movie?api_key=e3bb2db6237113d6ad4ef719e0b1e827&query=${word}&language=en-US&page=1`
       );
       setMovies(res.data.results);
+      setPageCount(res.data.total_pages);
     }
   };
   useEffect(() => {
@@ -33,7 +43,7 @@ function App() {
     <div className="font color-body">
       <NavBar search={search} />
       <Container>
-        <MoviesList movies={movies} />
+        <MoviesList movies={movies} getPage={getPage} pageCount={pageCount} />
       </Container>
     </div>
   );

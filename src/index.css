@@ -2,13 +2,14 @@ body {
   margin: 0;
 }
 .color-body {
-  background-color: white;
-  height: 100vh;
+  background-color: #6e1202;
+
+  height: auto;
 }
 .nav-style {
   height: 90px;
   width: 1440px;
-  background-color: #b45b35;
+  background-color: #6e1202;
 }
 
 .logo {
@@ -86,8 +87,8 @@ body {
 }
 
 .color {
-  color: #b45b35;
-  background-color: #b45b35;
+  color: #6e1202;
+  background-color: #6e1202;
 }
 
 .card-detalis {
